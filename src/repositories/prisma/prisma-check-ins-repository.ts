@@ -1,9 +1,9 @@
 import { prisma } from '@/lib/prisma'
 import { DayJsProvider } from '@/providers/day-js-provider'
 import { CheckIn, Prisma } from '@prisma/client'
-import { CheckInsRepoository } from '../check-ins-repository'
+import { CheckInsRepository } from '../check-ins-repository'
 
-export class PrismaCheckInsRepository implements CheckInsRepoository {
+export class PrismaCheckInsRepository implements CheckInsRepository {
   constructor(private dayJsProvider: DayJsProvider) {}
 
   async findById(id: string) {
