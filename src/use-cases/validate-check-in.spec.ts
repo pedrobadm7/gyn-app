@@ -1,3 +1,4 @@
+import { DayJsProvider } from '@/providers/day-js-provider'
 import { InMemoryCheckInsRepository } from '@/repositories/in-memory-check-ins-repository'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
@@ -6,14 +7,18 @@ import { ValidateCheckInUseCase } from './validate-check-in'
 
 let checkInsRepository: InMemoryCheckInsRepository
 let validateCheckInUseCase: ValidateCheckInUseCase
+let dayJsProvider: DayJsProvider
 
 const TWENTY_ONE_MINUTS_IN_MS = 1000 * 60 * 21
 
 describe('Validate Check-in Use Case', () => {
   beforeEach(async () => {
     checkInsRepository = new InMemoryCheckInsRepository()
-
-    validateCheckInUseCase = new ValidateCheckInUseCase(checkInsRepository)
+    dayJsProvider = DayJsProvider.getInstance()
+    validateCheckInUseCase = new ValidateCheckInUseCase(
+      checkInsRepository,
+      dayJsProvider,
+    )
 
     vi.useFakeTimers()
   })
