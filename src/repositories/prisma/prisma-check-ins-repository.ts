@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma'
-import { DayJsProvider } from '@/providers/day-js-provider'
+import { DateProvider } from '@/providers/date-provider'
 import { CheckIn, Prisma } from '@prisma/client'
 import { CheckInsRepository } from '../check-ins-repository'
 
 export class PrismaCheckInsRepository implements CheckInsRepository {
-  constructor(private dayJsProvider: DayJsProvider) {}
+  constructor(private dayJsProvider: DateProvider) {}
 
   async findById(id: string) {
     const checkIn = await prisma.checkIn.findUnique({

@@ -1,4 +1,4 @@
-import { DayJsProvider } from '@/providers/day-js-provider'
+import { DateProvider } from '@/providers/date-provider'
 import { CheckInsRepoository } from '@/repositories/check-ins-repository'
 import { CheckIn } from '@prisma/client'
 import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
@@ -17,7 +17,7 @@ const TWENTY_MINUTES = 20
 export class ValidateCheckInUseCase {
   constructor(
     private checkInRepository: CheckInsRepoository,
-    private dayJsProvider: DayJsProvider,
+    private dayJsProvider: DateProvider,
   ) {}
 
   async execute({

@@ -1,10 +1,10 @@
-import { DayJsProvider } from '@/providers/day-js-provider'
+import { DateProvider } from '@/providers/date-provider'
 import { PrismaCheckInsRepository } from '@/repositories/prisma/prisma-check-ins-repository'
 import { PrismaGymsRepository } from '@/repositories/prisma/prisma-gyms-repository'
 import { CheckInUseCase } from '../check-in'
 
 export function makeCheckInUseCase() {
-  const dayJsProvider = DayJsProvider.getInstance()
+  const dayJsProvider = DateProvider.getInstance()
   const prismaCheckInsRepository = new PrismaCheckInsRepository(dayJsProvider)
   const gymsRepository = new PrismaGymsRepository()
 

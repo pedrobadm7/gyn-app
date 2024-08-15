@@ -1,16 +1,16 @@
 /* eslint-disable no-use-before-define */
 import dayjs from 'dayjs'
 
-export class DayJsProvider {
-  private static instance: DayJsProvider
+export class DateProvider {
+  private static instance: DateProvider
 
   private constructor() {}
 
-  public static getInstance(): DayJsProvider {
-    if (!DayJsProvider.instance) {
-      DayJsProvider.instance = new DayJsProvider()
+  public static getInstance(): DateProvider {
+    if (!DateProvider.instance) {
+      DateProvider.instance = new DateProvider()
     }
-    return DayJsProvider.instance
+    return DateProvider.instance
   }
 
   isAfter(date: string | Date, newDate: string | Date): boolean {
