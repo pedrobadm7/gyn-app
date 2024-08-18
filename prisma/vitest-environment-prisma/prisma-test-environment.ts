@@ -28,6 +28,16 @@ export default <Environment>{
 
     process.env.DATABASE_URL = databaseURL
 
+    const existingSchemas = await prisma.$queryRawUnsafe<string[]>(
+      `SELECT schema_name FROM information_schema.schemata WHERE schema_name = '${schema}'`,
+    )
+
+    if (existingSchemas.length > 0) {
+      throw new Error(
+        `Schema ${schema} already exists. Please retry with a different UUID.`,
+      )
+    }
+
     execSync('npx prisma migrate deploy')
 
     return {
