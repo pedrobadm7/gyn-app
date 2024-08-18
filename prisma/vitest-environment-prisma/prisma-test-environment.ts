@@ -25,6 +25,16 @@ export default <Environment>{
   async setup() {
     const schema = randomUUID()
 
+    const existingSchemas = await prisma.$queryRawUnsafe<string[]>(
+      `SELECT schema_name FROM information_schema.schemata WHERE schema_name = '${schema}'`,
+    )
+
+    if (existingSchemas.length > 0) {
+      throw new Error(
+        `Schema ${schema} already exists. Please retry with a different UUID.`,
+      )
+    }
+
     const databaseURL = generateDatabaseUrl(schema)
 
     process.env.DATABASE_URL = databaseURL
