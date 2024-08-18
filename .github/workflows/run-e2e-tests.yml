@@ -13,7 +13,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRESQL_USERNAME: root
+          POSTGRESQL_USER: root
           POSTGRESQL_PASSWORD: root
           POSTGRESQL_DATABASE: apisolid
 
