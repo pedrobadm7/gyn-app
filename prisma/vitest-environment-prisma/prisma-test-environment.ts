@@ -3,7 +3,7 @@ import 'dotenv/config'
 import { execSync } from 'node:child_process'
 
 import { randomUUID } from 'node:crypto'
-import type { Environment } from 'vitest/environments'
+import type { Environment } from 'vitest'
 
 const prisma = new PrismaClient()
 
@@ -24,16 +24,6 @@ export default <Environment>{
   transformMode: 'ssr',
   async setup() {
     const schema = randomUUID()
-
-    const existingSchemas = await prisma.$queryRawUnsafe<string[]>(
-      `SELECT schema_name FROM information_schema.schemata WHERE schema_name = '${schema}'`,
-    )
-
-    if (existingSchemas.length > 0) {
-      throw new Error(
-        `Schema ${schema} already exists. Please retry with a different UUID.`,
-      )
-    }
 
     const databaseURL = generateDatabaseUrl(schema)
 
