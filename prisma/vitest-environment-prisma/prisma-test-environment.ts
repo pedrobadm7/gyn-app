@@ -3,7 +3,7 @@ import 'dotenv/config'
 import { execSync } from 'node:child_process'
 
 import { randomUUID } from 'node:crypto'
-import type { Environment } from 'vitest'
+import type { Environment } from 'vitest/environments'
 
 const prisma = new PrismaClient()
 
