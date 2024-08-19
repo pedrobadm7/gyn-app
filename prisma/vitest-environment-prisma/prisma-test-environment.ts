@@ -32,11 +32,10 @@ export default <Environment>{
 
     return {
       async teardown() {
-        console.log('Tentando remover o esquema:', schema)
         await prisma.$executeRawUnsafe(
           `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
         )
-        console.log('Esquema removido com sucesso')
+
         await prisma.$disconnect()
       },
     }
