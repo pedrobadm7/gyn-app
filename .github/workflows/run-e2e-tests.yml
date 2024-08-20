@@ -34,5 +34,7 @@ jobs:
 
       - run: npm run test:e2e
         env:
+          POSTGRES_HOST: postgres
           JWT_SECRET: testing-secret
+          POSTGRES_PORT: 5432
           DATABASE_URL: 'postgresql://root:root@localhost:5432/mydb?schema=public'
