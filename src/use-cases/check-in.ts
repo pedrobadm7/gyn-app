@@ -1,4 +1,4 @@
-import { CheckInsRepoository } from '@/repositories/check-ins-repository'
+import { CheckInsRepository } from '@/repositories/check-ins-repository'
 import { GymsRepository } from '@/repositories/gyms-repository'
 import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
 import { CheckIn } from '@prisma/client'
@@ -21,7 +21,7 @@ const MAX_DISTANCE = 0.1
 
 export class CheckInUseCase {
   constructor(
-    private checkInRepository: CheckInsRepoository,
+    private checkInRepository: CheckInsRepository,
     private gymsRepository: GymsRepository,
   ) {}
 
