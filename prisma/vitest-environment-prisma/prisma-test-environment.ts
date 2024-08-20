@@ -12,8 +12,6 @@ function generateDatabaseUrl(schema: string) {
     throw new Error('Please provide a DATABASE_URL environment variable.')
   }
 
-  console.log('Initial DATABASE_URL:', process.env.DATABASE_URL)
-
   const url = new URL(process.env.DATABASE_URL)
 
   url.searchParams.set('schema', schema)
