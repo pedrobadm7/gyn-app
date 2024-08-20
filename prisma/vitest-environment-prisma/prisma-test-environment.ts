@@ -12,11 +12,11 @@ function generateDatabaseUrl(schema: string) {
     throw new Error('Please provide a DATABASE_URL environment variable.')
   }
 
+  console.log('Initial DATABASE_URL:', process.env.DATABASE_URL)
+
   const url = new URL(process.env.DATABASE_URL)
 
   url.searchParams.set('schema', schema)
-
-  console.log({ url })
 
   return url.toString()
 }
@@ -29,8 +29,6 @@ export default <Environment>{
     const databaseURL = generateDatabaseUrl(schema)
 
     process.env.DATABASE_URL = databaseURL
-
-    console.log({ databaseURL: process.env.DATABASE_URL })
 
     execSync('npx prisma migrate deploy')
 
