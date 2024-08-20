@@ -31,3 +31,5 @@ jobs:
         env:
           JWT_SECRET: testing-secret
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}"
