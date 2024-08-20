@@ -30,4 +30,4 @@ jobs:
       - run: npm run test:e2e
         env:
           JWT_SECRET: testing-secret
-          DATABASE_URL: 'postgresql://root:root@localhost:5432/mydb?schema=public'
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
