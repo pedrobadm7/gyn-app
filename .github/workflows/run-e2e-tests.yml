@@ -26,9 +26,8 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
+      - run: echo ${{ secrets.DATABASE_URL }}
       - run: npm run test:e2e
         env:
           JWT_SECRET: testing-secret
           DATABASE_URL: 'postgresql://root:root@localhost:5432/mydb?schema=public'
-
-      - run: echo ${{ secrets.DATABASE_URL }}
